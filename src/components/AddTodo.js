@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/actions";
 
-function AddTodo({ addTodo }) {
+export default function AddTodo() {
   const [input, setInput] = useState("");
+  const dispatch = useDispatch();
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    addTodo(input);
+    dispatch(addTodo(input));
     setInput("");
   };
 
@@ -18,5 +19,3 @@ function AddTodo({ addTodo }) {
     </form>
   );
 }
-
-export default connect(null, { addTodo })(AddTodo);
